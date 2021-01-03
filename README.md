@@ -1,11 +1,11 @@
-# Programming Quiz App
+## Programming Quiz App
 
-## External API used
+# External API used
 
 https://opentdb.com/api_config.php
 
-## Frontend : ReactJS
+# Frontend : ReactJS
 
-## Backened : NodeJS
+# Backened : NodeJS
 
-## Styling : Material-UI
+# Styling : Material-UI
