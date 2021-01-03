@@ -6,7 +6,13 @@ function Questions(props) {
   const text = props.ind + 1 + " . " + props.question;
   let ans = "";
   if (props.isAnswered !== "no") {
-    ans = <h3>Correct Answer : {props.printAns}</h3>;
+    ans = (
+      <h3
+        dangerouslySetInnerHTML={{
+          __html: "Correct Answer : " + props.printAns,
+        }}
+      ></h3>
+    );
   }
 
   return (
