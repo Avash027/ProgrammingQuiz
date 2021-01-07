@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import Questions from "./utils/Question";
-import Appbar from "./utils/Appbar";
+import Appbar from "./Styling/Appbar";
 import { Button, TextField } from "@material-ui/core";
+
+import Questions from "./QuestionGeneration/Questions";
 
 class App extends Component {
   constructor(props) {
@@ -48,6 +49,7 @@ class App extends Component {
     let ans = [];
     let correct_ans = [];
     let isAnswered = [];
+
     for (var i = 0; i < results.length; i++) {
       isAnswered.push("no");
       questions.push(results[i].question);
@@ -69,7 +71,7 @@ class App extends Component {
 
   submitAnswer = (event) => {
     event.preventDefault();
-    // event.target.className
+
     let isAns = [...this.state.isAnswered];
     if (event.target.className === this.state.correct_ans[event.target.id]) {
       isAns[event.target.id] = "right";
@@ -103,8 +105,6 @@ class App extends Component {
   render() {
     let elem = "";
 
-    const { questions, ans, isAnswered } = this.state;
-
     if (this.state.hasErrorOccured) {
       elem = (
         <center>
@@ -113,22 +113,10 @@ class App extends Component {
       );
     } else if (this.state.hasGeneratedQuiz) {
       elem = (
-        <div className="quizDiv">
-          {questions.map((ques, idx) => {
-            return (
-              <Questions
-                key={idx}
-                ind={idx}
-                question={ques}
-                correctAns={idx}
-                ans={ans[idx]}
-                isAnswered={isAnswered[idx]}
-                printAns={this.state.correct_ans[idx]}
-                click={(event) => this.submitAnswer(event)}
-              ></Questions>
-            );
-          })}
-        </div>
+        <Questions
+          data={this.state}
+          click={(event) => this.submitAnswer(event)}
+        ></Questions>
       );
     } else {
       elem = "";

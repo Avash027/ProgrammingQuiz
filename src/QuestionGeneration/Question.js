@@ -1,10 +1,11 @@
 import React from "react";
-import "./css/disableDiv.css";
 import { Paper } from "@material-ui/core";
+import "./css/disableDiv.css";
 
 function Questions(props) {
   const text = props.ind + 1 + " . " + props.question;
   let ans = "";
+
   if (props.isAnswered !== "no") {
     ans = (
       <h3
